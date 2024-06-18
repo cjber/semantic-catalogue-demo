@@ -1,0 +1,97 @@
+schema: '2.0'
+stages:
+  api:
+    cmd: python -m src.api
+    deps:
+    - path: src/api.py
+      hash: md5
+      md5: 039659c2448c79157637cbc279bcbd9c
+      size: 2129
+    - path: src/common/utils.py
+      hash: md5
+      md5: 28d7130a1d86a066e574b1db781a90b7
+      size: 966
+    outs:
+    - path: data/catalogue-metadata.json
+      hash: md5
+      md5: b4d209c01388036b5dea16582529d754
+      size: 464664
+    - path: data/docs
+      hash: md5
+      md5: 39f6a0c9ced9eb80d9ba39e96af8eb24.dir
+      size: 26796133
+      nfiles: 169
+    - path: data/files-metadata.json
+      hash: md5
+      md5: ea0373edf27e27319643835962ab8673
+      size: 42187
+  extract:
+    cmd: python -m src.extract
+    deps:
+    - path: data/pdfs
+      hash: md5
+      md5: 305e9c37aee994ff7067481d3ca7f74a.dir
+      size: 26656939
+      nfiles: 68
+    - path: src/extract.py
+      hash: md5
+      md5: 88e72e9148ba44cb1c1ea7fb2f4054fc
+      size: 1638
+    - path: src/params.py
+      hash: md5
+      md5: 3f1acc00e5aa88d25f063c8cd9057860
+      size: 120
+    outs:
+    - path: data/txts
+      hash: md5
+      md5: 7173e6b93e1b8127558b3f4f46ddd9d8.dir
+      size: 1889149
+      nfiles: 68
+  datastore:
+    cmd: python -m src.datastore
+    deps:
+    - path: config/config.toml
+      hash: md5
+      md5: c0ec739e2750ca005515492240c262af
+      size: 1206
+    - path: src/common/utils.py
+      hash: md5
+      md5: 370b33167234e78775243bddf6ac625e
+      size: 1679
+    - path: src/datastore.py
+      hash: md5
+      md5: 0dea604c89fb4fd636ea81f2dc016000
+      size: 4451
+  query_api:
+    cmd: python -m src.query_api
+    deps:
+    - path: config/config.toml
+      hash: md5
+      md5: a46bfcd468706b5bb1d295989de11c29
+      size: 1278
+    - path: src/common/utils.py
+      hash: md5
+      md5: ff3a3b98a1bad8be0adb0c8ad1d82db0
+      size: 1560
+    - path: src/query_api.py
+      hash: md5
+      md5: 65cec7ec3b7bf307dc47c8ec307b42b8
+      size: 4274
+    outs:
+    - path: data/catalogue-metadata.json
+      hash: md5
+      md5: 969cff8b18f3503a49196902e965e43c
+      size: 491252
+    - path: data/files-metadata.json
+      hash: md5
+      md5: 0d3532bbf956ebb3d719f2b1c8bd3a3b
+      size: 47320
+    - path: data/profiles
+      hash: md5
+      md5: 5bf075cc0b99b864a56d2430a812515e.dir
+      size: 29105914
+      nfiles: 176
+    - path: data/response.json
+      hash: md5
+      md5: 544f8553ead81c4c165a5a3f5248d753
+      size: 483071

@@ -1,0 +1,20 @@
+stages:
+  query_api:
+    cmd: python -m src.query_api
+    deps:
+      - src/query_api.py
+      - src/common/utils.py
+
+      - config/config.toml
+    outs:
+      - data/catalogue-metadata.json
+      - data/files-metadata.json
+      - data/file_list.json
+      - data/profiles
+  datastore:
+    cmd: python -m src.datastore
+    deps:
+      - src/datastore.py
+      - src/common/utils.py
+
+      - config/config.toml

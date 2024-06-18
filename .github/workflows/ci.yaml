@@ -1,0 +1,22 @@
+on: [push]
+
+name: CI Action
+
+jobs:
+ test:
+    name: Test PDM
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v3
+
+        - name: Setup PDM
+          uses: pdm-project/setup-pdm@v3
+          with:
+            python-version: '3.11.6'
+            cache: true
+
+        - name: Install dependencies
+          run: pdm install -v && pdm info
+
+        - name: Display Python version
+          run: pdm run python -c "import sys; print(sys.version)"

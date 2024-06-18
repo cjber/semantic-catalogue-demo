@@ -1,0 +1,42 @@
+[project]
+name = "semantic-catalogue-demo"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "cjber", email = "cjberragan@gmail.com" }
+]
+dependencies = [
+    "llama-index>=0.10.46",
+    "llama-index-vector-stores-pinecone>=0.1.7",
+    "llama-index-readers-file>=0.1.25",
+    "llama-parse>=0.4.4",
+    "requests>=2.32.3",
+    "fastapi>=0.111.0",
+    "pydantic-settings>=2.3.3",
+    "seaborn>=0.13.2",
+    "dateparser>=1.2.0",
+    "setuptools>=70.0.0",
+]
+readme = "README.md"
+requires-python = ">= 3.12"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "ipython>=8.25.0",
+    "ipdb>=0.13.13",
+    "polars>=0.20.31",
+    "pre-commit>=3.7.1",
+    "types-dateparser>=1.2.0.20240420",
+    "unstructured[pdf]>=0.14.6",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/semantic_catalogue_demo"]
